@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
     this.ngxService.start();
     var formData = this.signupForm.value;
     var data = {
-      user: formData.username,
+      username: formData.username,
       email: formData.email,
       password: formData.password
     }
