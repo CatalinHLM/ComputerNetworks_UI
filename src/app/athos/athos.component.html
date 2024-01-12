@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="top-container">
+    <div class="top-left">
+      <app-textarea></app-textarea>
+    </div>
+    <div class="top-right">
+      <img src="assets/images/athos.jpg" alt="robot" />
+      <div class="battery">
+        <p>Battery</p>
+        <div class="battery-level">
+          <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-container">
+    <div class="bottom-left">
+      <h2>CONTROL PANEL</h2>
+      <app-slide-togle></app-slide-togle>
+
+      <div class="control-panel">
+        <div class="slider">
+          <app-slaider></app-slaider>
+        </div>
+        <div class="buttons">
+          <app-buttons></app-buttons>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-right">
+      <app-data-table class="data-table"></app-data-table>
+    </div>
+  </div>
+</div>

@@ -11,14 +11,14 @@ export class UserService {
 
   signup(data: any) {
     return this.httpClient.post(this.url +
-      "/api/auth/register", data, {
+      "/user/signup", data, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
   login(data: any) {
     return this.httpClient.post(this.url +
-      "/api/auth/login", data, {
+      "/user/login", data, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
