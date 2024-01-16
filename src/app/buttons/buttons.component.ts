@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./buttons.component.css']
 })
 export class ButtonsComponent {
+ buttonClicked = false;
 
+ onButtonClick() {
+  this.buttonClicked = true;
+ }
 }
