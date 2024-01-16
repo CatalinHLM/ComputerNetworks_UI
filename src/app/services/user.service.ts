@@ -11,19 +11,19 @@ export class UserService {
 
   signup(data: any) {
     return this.httpClient.post(this.url +
-      "/user/signup", data, {
+      "/api/auth/register", data, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
   login(data: any) {
     return this.httpClient.post(this.url +
-      "/user/login", data, {
+      "/api/auth/login", data, {
       headers: new HttpHeaders().set('Content-Type', "application/json")
     })
   }
 
   checkToken(){
-    return this.httpClient.get(this.url + "/user/checkToken");
+    return this.httpClient.get(this.url + "api/auth/checkToken");
   }
 }

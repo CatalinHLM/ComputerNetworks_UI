@@ -6,10 +6,7 @@ import { SnackbarService } from '../services/snackbar.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { FormGroup } from '@angular/forms'
-import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { GlobalContants } from '../shared/global-constant';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-signup',
@@ -42,7 +39,7 @@ export class SignupComponent implements OnInit {
     this.ngxService.start();
     var formData = this.signupForm.value;
     var data = {
-      username: formData.username,
+      user: formData.username,
       email: formData.email,
       password: formData.password
     }
@@ -50,8 +47,9 @@ export class SignupComponent implements OnInit {
       this.ngxService.stop();
       this.dialogRef.close();
       this.responseMessage = response?.message;
-      this.snackbarService.openSnackBar(this.responseMessage, "");
-      this.router.navigate(['/']);
+      this.snackbarService.openSnackBar(this.responseMessage, "Successful registration");
+      localStorage.setItem('token',response.token);
+      this.router.navigate(['task']);
     }, (error) => {
       this.ngxService.stop();
       if (error.error?.message) {
