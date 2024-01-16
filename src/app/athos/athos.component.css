@@ -2,7 +2,12 @@
   padding: 50px 50px 10px 50px;
   height: 90dvh;
   border: none;
-  background-color: orange;
+  /*background-color: rgb(0, 106, 255);*/
+  background-color: #d3d3d3;
+  background-image: linear-gradient(315deg, #d3d3d3 0%, #57606f 74%);
+  /*background-color: #c8c1c1;
+  background-image: linear-gradient(315deg, #c8c1c1 0%, #4a0404 74%);
+*/
   display: flex;
   flex-direction: column;
   gap: 3%;
@@ -69,7 +74,8 @@ app-textarea {
 .bottom-left {
   /* border-radius: 10px; */
   padding-left: 20px;
-  background-color: lightblue;
+  /*background-color: lightblue;*/
+  background-color: #bccad6;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
