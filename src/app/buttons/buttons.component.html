@@ -1,23 +1,23 @@
 <div class="buttons">
   <div class="up">
-    <button color="warn" mat-mini-fab>
+    <button color="warn" mat-mini-fab (mousedown)="onButtonPress('front')" (mouseup)="onButtonRelease('front')" aria-label="Move Forward">
       <mat-icon>arrow_drop_up</mat-icon>
     </button>
   </div>
   <div class="left-right">
     <div class="left">
-      <button color="warn" mat-mini-fab>
+      <button color="warn" mat-mini-fab (mousedown)="onButtonPress('left')" (mouseup)="onButtonRelease('left')" aria-label="Move Left">
         <mat-icon>arrow_left</mat-icon>
       </button>
     </div>
     <div class="right">
-      <button color="warn" mat-mini-fab>
+      <button color="warn" mat-mini-fab (mousedown)="onButtonPress('right')" (mouseup)="onButtonRelease('right')" aria-label="Move Right">
         <mat-icon>arrow_right</mat-icon>
       </button>
     </div>
   </div>
   <div class="down">
-    <button color="warn" mat-mini-fab>
+    <button color="warn" mat-mini-fab (mousedown)="onButtonPress('back')" (mouseup)="onButtonRelease('back')" aria-label="Move Backward">
       <mat-icon>arrow_drop_down</mat-icon>
     </button>
   </div>

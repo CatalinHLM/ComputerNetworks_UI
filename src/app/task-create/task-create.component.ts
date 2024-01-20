@@ -33,29 +33,29 @@ export class TaskCreateComponent {
     })
   }
 
-  handleSubmit() {
-    this.ngxService.start();
-    var formData = this.taskForm.value;
-    var data = {
-      name: formData.name,
-      description: formData.description,
-      due_date: formData.due_date
-    }
-    this.taskboardService.createTask(data).subscribe((response: any) => {
-      this.ngxService.stop();
-      this.dialogRef.close();
-      this.responseMessage = response?.message;
-      this.snackbarService.openSnackBar(this.responseMessage, "");
-      this.router.navigate(['/']);
-    }, (error) => {
-      this.ngxService.stop();
-      if (error.error?.message) {
-        this.responseMessage = error.error?.message;
-      }
-      else {
-        this.responseMessage = GlobalContants.genericError;
-      }
-      this.snackbarService.openSnackBar(this.responseMessage, GlobalContants.error);
-    })
-  }
+  // handleSubmit() {
+  //   this.ngxService.start();
+  //   var formData = this.taskForm.value;
+  //   var data = {
+  //     name: formData.name,
+  //     description: formData.description,
+  //     due_date: formData.due_date
+  //   }
+  //   this.taskboardService.createTask(data).subscribe((response: any) => {
+  //     this.ngxService.stop();
+  //     this.dialogRef.close();
+  //     this.responseMessage = response?.message;
+  //     this.snackbarService.openSnackBar(this.responseMessage, "");
+  //     this.router.navigate(['/']);
+  //   }, (error) => {
+  //     this.ngxService.stop();
+  //     if (error.error?.message) {
+  //       this.responseMessage = error.error?.message;
+  //     }
+  //     else {
+  //       this.responseMessage = GlobalContants.genericError;
+  //     }
+  //     this.snackbarService.openSnackBar(this.responseMessage, GlobalContants.error);
+  //   })
+  // }
 }

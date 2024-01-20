@@ -17,7 +17,9 @@ export class HomeComponent {
     private userService:UserService) { }
 
   ngOnInit(): void {
+
     if(localStorage.getItem('token') != null){
+      console.log(localStorage.getItem('token'));
       this.userService.checkToken().subscribe((response:any)=>{
         this.router.navigate(['/task']);
       },(error:any)=>{
@@ -38,5 +40,5 @@ export class HomeComponent {
     this.dialog.open(LoginComponent,dialogConfig);
   }
 
-  
+
 }

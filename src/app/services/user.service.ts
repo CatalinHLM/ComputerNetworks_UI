@@ -24,6 +24,6 @@ export class UserService {
   }
 
   checkToken(){
-    return this.httpClient.get(this.url + "api/auth/checkToken");
+    return this.httpClient.get(this.url + "/api/checkToken");
   }
 }

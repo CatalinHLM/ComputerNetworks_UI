@@ -11,16 +11,30 @@ export interface DataTableItem {
   info: number;
 }
 
+interface ResponseData {
+  farLeft: number;
+  left: number;
+  center: number;
+  right: number;
+  farRight: number;
+  lineLeft: number;
+  lineRight: number;
+  leftWheelSpeed: number;
+  rightWheelSpeed: number;
+  message: string;
+}
+
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  { id: 1, name: 'Enemy sensor', info: 0 },
-  { id: 2, name: 'Enemy sensor', info: 0 },
-  { id: 3, name: 'Enemy sensor', info: 0 },
-  { id: 4, name: 'Enemy sensor', info: 0 },
-  { id: 5, name: 'Enemy sensor', info: 0 },
-  { id: 6, name: 'Enemy sensor', info: 0 },
-  { id: 7, name: 'Line sensor', info: 0 },
-  { id: 8, name: 'Line sensor', info: 0 },
+  { id: 1, name: 'Far Left Enemy sensor', info: 0 },
+  { id: 2, name: 'Left Enemy sensor', info: 0 },
+  { id: 3, name: 'Center Enemy sensor', info: 0 },
+  { id: 4, name: 'Right Enemy sensor', info: 0 },
+  { id: 5, name: 'Far Right Enemy sensor', info: 0 },
+  { id: 6, name: 'Left Line sensor', info: 0 },
+  { id: 7, name: 'Right Line sensor', info: 0 },
+  { id: 8, name: 'Left Wheel Speed', info: 0 },
+  { id: 9, name: 'Right Wheel Speed', info: 0 },
 ];
 
 /**
@@ -62,6 +76,24 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
     }
   }
 
+  public initializeData(response : ResponseData[]): void {
+    this.data = [
+      { id: 1, name: 'Far Left Enemy sensor', info: response[0].farLeft },
+      { id: 2, name: 'Left Enemy sensor', info: response[0].left },
+      { id: 3, name: 'Center Enemy sensor', info: response[0].center },
+      { id: 4, name: 'Right Enemy sensor', info: response[0].right },
+      { id: 5, name: 'Far Right Enemy sensor', info: response[0].farRight },
+      { id: 6, name: 'Left Line sensor', info: response[0].lineLeft },
+      { id: 7, name: 'Right Line sensor', info: response[0].lineRight },
+      { id: 8, name: 'Left Wheel Speed', info: response[0].leftWheelSpeed },
+      { id: 9, name: 'Right Wheel Speed', info: response[0].rightWheelSpeed },
+      // ... you can continue adding fields as needed ...
+    ];
+
+    // Optionally, update the table after initializing data
+    this.updateTable();
+  }
+
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
@@ -78,6 +110,20 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
       return data.splice(startIndex, this.paginator.pageSize);
     } else {
       return data;
+    }
+  }
+
+  public updateTable(): void {
+    if (this.paginator && this.sort) {
+      const updatedData = this.getPagedData(this.getSortedData([...this.data]));
+      this.data = updatedData;
+
+      // Notify the table to refresh by emitting a new value
+      this.connect().subscribe((data) => {
+        this.paginator!.length = data.length;
+      });
+    } else {
+      throw Error('Paginator and sort must be set before updating the table.');
     }
   }
 
